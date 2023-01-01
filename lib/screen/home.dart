@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+//import 'dart:convert';
 import 'package:app_cliente_restaurante/widgets/item_cardapio_list.dart';
 
 class Home extends StatefulWidget {
@@ -9,20 +10,29 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
-
-  Map<String, String> dadosCardapio =
-  {
-    "titulo"  : 'Bife com batata frita',
-    "imagem"  : 'lib/assets/img/bkgTopo.png',
-    "valores" : 'G - 25,00 | P - 18,00',
-  };
+  List<dynamic> dadosCardapio = [
+    {
+      "ID": 1,
+      "titulo": 'Bife com batata frita',
+      "imagem": 'lib/assets/img/bifecomfritas.jpg',
+      "valores": 'G - 25,00 | P - 18,00',
+    },
+    {
+      "ID": 2,
+      "titulo": 'Carne assada com maionese',
+      "imagem": 'lib/assets/img/carneassadamaionese.jpg',
+      "valores": 'G - 25,00 | P - 14,00',
+    },
+    {
+      "ID": 3,
+      "titulo": 'Macarrão a bolonhesa com salada verde',
+      "imagem": 'lib/assets/img/macarraobolonhesa.jpg',
+      "valores": 'G - 25,00 | P - 18,00',
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
-
-    print(dadosCardapio['titulo']);
-
     return Scaffold(
       drawer: const Drawer(
         child: Text('Drawer'),
@@ -64,9 +74,6 @@ class _HomeState extends State<Home> {
                 width: MediaQuery.of(context).size.width,
                 child: Column(
                   children: [
-                    //====================
-                    //Título do card
-                    //====================
                     Container(
                       decoration: const BoxDecoration(),
                       padding: const EdgeInsets.all(10),
@@ -89,12 +96,31 @@ class _HomeState extends State<Home> {
                     const Divider(),
                     Column(
                       children: [
-                        const ItemCardapioList(),
-                        const ItemCardapioList(),
-                        const ItemCardapioList(),
-                        Container(
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          child: ElevatedButton(onPressed: (){}, child: const Text('Avançar')),
+                        for (dynamic item in dadosCardapio)
+                          ItemCardapioList(
+                            '',
+                            title: item['titulo'],
+                            imagem: item['imagem'],
+                            id: item['ID'],
+                          ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: const Color(0xFFFFAF00),
+                                  ),
+                                  onPressed: () {},
+                                  child: const Text(
+                                    'Próximo',
+                                    style: TextStyle(
+                                        color: Color(0xFF4C0303),
+                                        fontWeight: FontWeight.bold),
+                                  )),
+                            ),
+                          ],
                         ),
                       ],
                     ),
