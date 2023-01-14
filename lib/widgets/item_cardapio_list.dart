@@ -7,11 +7,17 @@ class ItemCardapioList extends StatefulWidget {
     required this.title,
     required this.imagem,
     required this.id,
+    required this.listapedidos,
+    required this.pedidos,
+    required this.retirapedido,
   }) : super(key: key);
 
   final String title;
   final String imagem;
   final int id;
+  final List listapedidos;
+  final Function(String) pedidos;
+  final Function(int) retirapedido;
 
   @override
   State<ItemCardapioList> createState() => _ItemCardapioListState();
@@ -19,35 +25,24 @@ class ItemCardapioList extends StatefulWidget {
 
 class _ItemCardapioListState extends State<ItemCardapioList> {
   int count = 0;
-  List listaDePedidos = [];
-
   _ItemCardapioListState();
 
   String? get title => null;
-
   @override
   Widget build(BuildContext context) {
-    criarLista() {
-      listaDePedidos[widget.id-1] = {
-        "titulo": widget.title,
-        "ID": widget.id,
-        "Quantidade": count,
-      };
-      return listaDePedidos;
-    }
-
     void increment() {
       setState(() {
         count++;
-        //listaDePedidos[0] = widget.id;
-        listaDePedidos;
-        criarLista;
+        widget.pedidos(widget.title);
       });
     }
 
     void decrement() {
+      var positionPedido = widget.listapedidos.indexOf(widget.title);
+
       setState(() {
         count--;
+        widget.retirapedido(positionPedido);
       });
     }
 
