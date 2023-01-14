@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 import 'package:app_cliente_restaurante/screen/home.dart';
+import 'package:app_cliente_restaurante/screen/login.dart';
 import 'package:flutter/material.dart';
 //import './theme/theme.dart';
 
@@ -20,6 +21,10 @@ void main() async {
       ),
     ),
     title: "Teste",
-    home: const Home(),
+    initialRoute: '/login',
+    routes: {
+      '/': (_) => const Home(),
+      '/login': (context) => const Login(),
+    },
   ));
 }
