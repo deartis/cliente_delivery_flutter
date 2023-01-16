@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 
-class FormLogin extends StatefulWidget {
-  const FormLogin({Key? key}) : super(key: key);
+class FormCadastro extends StatelessWidget {
+  const FormCadastro({Key? key}) : super(key: key);
 
-  @override
-  State<FormLogin> createState() => _FormLoginState();
-}
-
-class _FormLoginState extends State<FormLogin> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -89,6 +84,36 @@ class _FormLoginState extends State<FormLogin> {
               ),
             ),
             const SizedBox(height: 30),
+            TextField(
+              obscureText: true,
+              style: const TextStyle(color: Colors.white),
+              decoration: InputDecoration(
+                prefixIcon: const Icon(
+                  Icons.key,
+                  color: Color(0xFFFFFFFF),
+                ),
+                filled: true,
+                fillColor: const Color.fromRGBO(255, 255, 255, 0.3),
+                label: const Text('Repita a senha'),
+                labelStyle: const TextStyle(
+                  color: Color(0xFFFFFFFF),
+                  fontSize: 20,
+                ),
+                hintText: '****',
+                hintStyle: const TextStyle(
+                  color: Colors.grey,
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: const BorderSide(color: Color(0xFFFFFFFF)),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: const BorderSide(color: Color(0xFFFFAF00)),
+                ),
+              ),
+            ),
+            const SizedBox(height: 30),
             ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
@@ -96,14 +121,14 @@ class _FormLoginState extends State<FormLogin> {
                 minimumSize: const Size.fromHeight(50),
               ),
               child: const Text(
-                'Entrar',
+                'Cadastrar',
                 style: TextStyle(fontSize: 20),
               ),
             ),
             const SizedBox(height: 30),
             TextButton(
                 onPressed: () {},
-                child: const Text('Cadastrar-se',
+                child: const Text('Entrar',
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.white,
@@ -124,7 +149,7 @@ class _FormLoginState extends State<FormLogin> {
                       size: 60,
                     ),
                     Text(
-                      "Entrar com sua conta Google",
+                      "Cadastrar com conta Google",
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.blueAccent,

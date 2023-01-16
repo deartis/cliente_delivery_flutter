@@ -3,6 +3,7 @@ import 'firebase_options.dart';
 
 import 'package:app_cliente_restaurante/screen/home.dart';
 import 'package:app_cliente_restaurante/screen/login.dart';
+import 'package:app_cliente_restaurante/screen/cadastro.dart';
 import 'package:flutter/material.dart';
 //import './theme/theme.dart';
 
@@ -21,10 +22,11 @@ void main() async {
       ),
     ),
     title: "Teste",
-    initialRoute: '/login',
+    initialRoute: '/cadastro',
     routes: {
       '/': (_) => const Home(),
       '/login': (context) => const Login(),
+      '/cadastro': (context) => const Cadastro(),
     },
   ));
 }
