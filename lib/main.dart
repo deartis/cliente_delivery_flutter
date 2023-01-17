@@ -4,6 +4,8 @@ import 'firebase_options.dart';
 import 'package:app_cliente_restaurante/screen/home.dart';
 import 'package:app_cliente_restaurante/screen/login.dart';
 import 'package:app_cliente_restaurante/screen/cadastro.dart';
+import 'package:app_cliente_restaurante/screen/primeiro_pos.dart';
+import 'package:app_cliente_restaurante/screen/segundo_pos.dart';
 import 'package:flutter/material.dart';
 //import './theme/theme.dart';
 
@@ -21,12 +23,13 @@ void main() async {
         backgroundColor: Color.fromRGBO(77, 3, 3, 1),
       ),
     ),
-    title: "Teste",
-    initialRoute: '/cadastro',
+    initialRoute: '/primeiropos',
     routes: {
       '/': (_) => const Home(),
       '/login': (context) => const Login(),
       '/cadastro': (context) => const Cadastro(),
+      '/primeiropos': (context) => const PrimeiroPos(),
+      '/segundopos': (context) => const SegundoPos(),
     },
   ));
 }

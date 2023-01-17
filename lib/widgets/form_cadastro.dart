@@ -18,12 +18,6 @@ class FormCadastro extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-
-            /*const Icon(
-              Icons.person,
-              color: Color(0xFFFFFFFF),
-              size: 100.0,
-            ),*/
             const SizedBox(height: 100),
             TextField(
               keyboardType: TextInputType.emailAddress,

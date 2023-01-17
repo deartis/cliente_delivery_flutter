@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 //import 'dart:convert';
 import 'package:app_cliente_restaurante/widgets/item_cardapio_list.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../widgets/header.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -72,29 +73,7 @@ class _HomeState extends State<Home> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Container(
-              //color: const Color(0XFF800808),
-              height: 150,
-              width: MediaQuery.of(context).size.width,
-              decoration: const BoxDecoration(
-                  image: DecorationImage(
-                image: AssetImage('lib/assets/img/bkgTopo.png'),
-                fit: BoxFit.cover,
-              )),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: const [
-                  Text(
-                    'Cardápio',
-                    style: TextStyle(
-                        color: Color.fromRGBO(255, 175, 0, 1),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25),
-                  ),
-                ],
-              ),
-            ),
+            const Header(titulo: "Cardápio",),
             Card(
               elevation: 2,
               margin: const EdgeInsets.all(10),
