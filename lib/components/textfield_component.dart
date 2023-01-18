@@ -18,6 +18,7 @@ class TextfieldComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     tipoTeclado() {
       switch (teclado) {
         case "numerico":
