@@ -23,7 +23,7 @@ void main() async {
         backgroundColor: Color.fromRGBO(77, 3, 3, 1),
       ),
     ),
-    initialRoute: '/primeiropos',
+    initialRoute: '/segundopos',
     routes: {
       '/': (_) => const Home(),
       '/login': (context) => const Login(),
