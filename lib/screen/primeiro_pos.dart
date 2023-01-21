@@ -12,6 +12,7 @@ class PrimeiroPos extends StatefulWidget {
 }
 
 class _PrimeiroPosState extends State<PrimeiroPos> {
+  
   final nomeController = TextEditingController();
   final emailController = TextEditingController();
   final telefoneController = TextEditingController();
