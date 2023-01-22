@@ -30,7 +30,7 @@ class BotaoPadrao extends StatelessWidget {
         minimumSize: const Size.fromHeight(50),
       ),
       child: Text(
-        'Cadastrar',
+        texto,
         style: TextStyle(fontSize: 20, color: Color(corTexto)),
       ),
     );

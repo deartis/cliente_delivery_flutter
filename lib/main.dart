@@ -11,6 +11,7 @@ import 'package:app_cliente_restaurante/screen/cadastro.dart';
 import 'package:app_cliente_restaurante/screen/primeiro_pos.dart';
 import 'package:app_cliente_restaurante/screen/segundo_pos.dart';
 import 'package:app_cliente_restaurante/screen/detalhes_pedidos.dart';
+import 'package:app_cliente_restaurante/screen/medidas_valores.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,8 +27,7 @@ void main() async {
         backgroundColor: Color.fromRGBO(77, 3, 3, 1),
       ),
     ),
-    initialRoute: '/detalhespedidos',
-    
+    initialRoute: '/medidasvalores',
     routes: {
       /* -------------------------------------------------------------------------- */
       /*                               Rotas Nomeadas                               */
@@ -38,6 +38,7 @@ void main() async {
       '/primeiropos': (context) => const PrimeiroPos(),
       '/segundopos': (context) => const SegundoPos(),
       '/detalhespedidos': (context) => const DetalhesPedidos(),
+      '/medidasvalores': (context) => const MedidasValores(),
     },
   ));
 }

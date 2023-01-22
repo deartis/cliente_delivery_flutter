@@ -1,4 +1,4 @@
-import 'package:app_cliente_restaurante/components/botao_padrao.dart';
+//import 'package:app_cliente_restaurante/components/botao_padrao.dart';
 import 'package:flutter/material.dart';
 import '../widgets/card_pos_cadastro.dart';
 import '../widgets/header.dart';
@@ -19,7 +19,9 @@ class DetalhesPedidos extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: [
-              const Header(titulo: 'Ordem',),
+              const Header(
+                titulo: 'Ordem',
+              ),
               CardPosCadastro(
                 titulo: "Pedido 1",
                 icone: const Icon(
@@ -30,7 +32,6 @@ class DetalhesPedidos extends StatelessWidget {
                 filho: Container(
                   margin: const EdgeInsets.all(15),
                   child: Column(
-                    // ignore: prefer_const_literals_to_create_immutables
                     children: [
                       Container(
                         margin: const EdgeInsets.only(bottom: 10),
@@ -75,10 +76,32 @@ class DetalhesPedidos extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Row(children: [
-                        BotaoPadrao(texto: 'Avaçar', func: (){}),
-                        BotaoPadrao(texto: 'Avaçar', func: (){}),
-                      ],)
+                      const Divider(),
+                    ],
+                  ),
+                ),
+              ),
+              Card(
+                child: Container(
+                  padding: const EdgeInsets.all(10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      TextButton(onPressed: () {}, child: const Text('Voltar')),
+                      ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFFFFAF00),
+                          //minimumSize: const Size.fromHeight(50),
+                        ),
+                        child: const Text(
+                          "Avançar",
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Color(0xFF4D0303),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
