@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../widgets/card_pos_cadastro.dart';
 import '../widgets/header.dart';
+import '../components/botao_padrao_pequeno.dart';
+import '../components/botao_padrao_voltar.dart';
 
 class MedidasValores extends StatefulWidget {
   const MedidasValores({Key? key}) : super(key: key);
@@ -39,9 +41,11 @@ class _MedidasValoresState extends State<MedidasValores> {
                   margin: const EdgeInsets.all(15),
                   child: Column(
                     children: [
-                      const Text('Frango assado com salada verde'),
+                      const Text('Frango assado com salada verde', style: TextStyle(
+                        fontSize: 16,
+                      ),),
                       RadioListTile(
-                        activeColor:const Color(0xFF800808),
+                        activeColor: const Color(0xFF800808),
                         title: const Text("Grande - R\$25,00"),
                         value: "grande",
                         groupValue: gender,
@@ -52,7 +56,7 @@ class _MedidasValoresState extends State<MedidasValores> {
                         },
                       ),
                       RadioListTile(
-                        activeColor:const Color(0xFF800808),
+                        activeColor: const Color(0xFF800808),
                         title: const Text("Pequena - R\$18,00"),
                         value: "Pequena",
                         groupValue: gender,
@@ -63,7 +67,6 @@ class _MedidasValoresState extends State<MedidasValores> {
                         },
                       ),
                       const Divider(thickness: 1),
-                      
                     ],
                   ),
                 ),
@@ -74,20 +77,10 @@ class _MedidasValoresState extends State<MedidasValores> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      TextButton(onPressed: () {}, child: const Text('Voltar')),
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFFFFAF00),
-                          //minimumSize: const Size.fromHeight(50),
-                        ),
-                        child: const Text(
-                          "Avançar",
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Color(0xFF4D0303),
-                          ),
-                        ),
+                     const BotaoPadraoVoltar(),
+                      BotaoPadraoPequeno(
+                        texto: 'Avançar',
+                        func: () {},
                       ),
                     ],
                   ),
