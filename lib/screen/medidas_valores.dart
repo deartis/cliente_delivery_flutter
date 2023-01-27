@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+
+/* ------------------------- Importação dos widgets ------------------------- */
 import '../widgets/card_pos_cadastro.dart';
 import '../widgets/header.dart';
+import '../widgets/radio_selecao_preco_valor.dart';
+
+/* ----------------------- Importação dos componentes ----------------------- */
 import '../components/botao_padrao_pequeno.dart';
 import '../components/botao_padrao_voltar.dart';
+
+/* ------------------- Importação das configurações do App ------------------ */
+import '../config/app_config.dart';
 
 class MedidasValores extends StatefulWidget {
   const MedidasValores({Key? key}) : super(key: key);
@@ -12,10 +20,12 @@ class MedidasValores extends StatefulWidget {
 }
 
 class _MedidasValoresState extends State<MedidasValores> {
-  String? gender;
+  String? valorRadio;
 
   @override
   Widget build(BuildContext context) {
+    //print(AppConfig().cor['secundaria']);
+
     return Scaffold(
       drawer: const Drawer(
         child: Text('Drawer'),
@@ -32,39 +42,36 @@ class _MedidasValoresState extends State<MedidasValores> {
               ),
               CardPosCadastro(
                 titulo: "Seleção 1",
-                icone: const Icon(
+                icone: Icon(
                   Icons.brightness_1_sharp,
-                  color: Color(0xFF800808),
+                  color: Color(AppConfig().cor['secundaria']!),
                   size: 15,
                 ),
                 filho: Container(
                   margin: const EdgeInsets.all(15),
                   child: Column(
                     children: [
-                      const Text('Frango assado com salada verde', style: TextStyle(
-                        fontSize: 16,
-                      ),),
-                      RadioListTile(
-                        activeColor: const Color(0xFF800808),
-                        title: const Text("Grande - R\$25,00"),
-                        value: "grande",
-                        groupValue: gender,
-                        onChanged: (value) {
-                          setState(() {
-                            gender = value.toString();
-                          });
-                        },
-                      ),
-                      RadioListTile(
-                        activeColor: const Color(0xFF800808),
-                        title: const Text("Pequena - R\$18,00"),
-                        value: "Pequena",
-                        groupValue: gender,
-                        onChanged: (value) {
-                          setState(() {
-                            gender = value.toString();
-                          });
-                        },
+                      Container(
+                        margin: EdgeInsets.zero,
+                        child: Column(
+                          children: [
+                            PrecoValor(
+                              nomePrato: 'Frango Assado com Purê',
+                              tamanho: 'Grande',
+                              preco: '25,00',
+                              valor: 'grande',
+                              groupValue: '$valorRadio',
+                              onChangedValor: (val) {
+                                setState(
+                                  () {
+                                    valorRadio = val;
+                                    print(val);
+                                  },
+                                );
+                              },
+                            ),
+                          ],
+                        ),
                       ),
                       const Divider(thickness: 1),
                     ],
@@ -77,10 +84,10 @@ class _MedidasValoresState extends State<MedidasValores> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                     const BotaoPadraoVoltar(),
+                      const BotaoPadraoVoltar(),
                       BotaoPadraoPequeno(
                         texto: 'Avançar',
-                        func: () {},
+                        func: fazAlgo,
                       ),
                     ],
                   ),
@@ -91,5 +98,9 @@ class _MedidasValoresState extends State<MedidasValores> {
         ),
       ),
     );
+  }
+
+  void fazAlgo() {
+    print('Teste');
   }
 }
