@@ -61,6 +61,7 @@ class _MedidasValoresState extends State<MedidasValores> {
                               nomePrato: 'Peito de Frango Grelhado',
                             ),
                           ],
+                          
                         ),
                       ),
                     ],
