@@ -41,7 +41,7 @@ class _MedidasValoresState extends State<MedidasValores> {
                 titulo: 'Medida/preço',
               ),
               CardPosCadastro(
-                titulo: "Seleção 1",
+                titulo: "Seleção",
                 icone: Icon(
                   Icons.brightness_1_sharp,
                   color: Color(AppConfig().cor['secundaria']!),
@@ -54,26 +54,15 @@ class _MedidasValoresState extends State<MedidasValores> {
                       Container(
                         margin: EdgeInsets.zero,
                         child: Column(
-                          children: [
+                          children: const [
+                            PrecoValor(nomePrato: 'Bife com Fritas'),
+                            Divider(thickness: 1),
                             PrecoValor(
-                              nomePrato: 'Frango Assado com Purê',
-                              tamanho: 'Grande',
-                              preco: '25,00',
-                              valor: 'grande',
-                              groupValue: '$valorRadio',
-                              onChangedValor: (val) {
-                                setState(
-                                  () {
-                                    valorRadio = val;
-                                    print(val);
-                                  },
-                                );
-                              },
+                              nomePrato: 'Peito de Frango Grelhado',
                             ),
                           ],
                         ),
                       ),
-                      const Divider(thickness: 1),
                     ],
                   ),
                 ),

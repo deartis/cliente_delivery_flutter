@@ -1,108 +1,94 @@
 import 'package:flutter/material.dart';
-
-class RadioSelecaoPrecoValor extends StatefulWidget {
-  const RadioSelecaoPrecoValor({
-    Key? key,
-    required this.tamanho,
-    required this.preco,
-    required this.valor,
-    required this.groupValue,
-    required this.onChangedValor,
-  }) : super(key: key);
-
-  final String tamanho;
-  final String preco;
-  final String valor;
-  final String groupValue;
-  final Function onChangedValor;
-
-  @override
-  State<RadioSelecaoPrecoValor> createState() => _RadioSelecaoPrecoValorState();
-}
-
-class _RadioSelecaoPrecoValorState extends State<RadioSelecaoPrecoValor> {
-  @override
-  Widget build(BuildContext context) {
-    return RadioListTile(
-      activeColor: const Color(0xFF800808),
-      title: Text("${widget.tamanho} - R\$${widget.preco}"),
-      value: widget.valor,
-      groupValue: widget.groupValue,
-      onChanged: (value) {
-        setState(() {
-          widget.onChangedValor(value);
-        });
-      },
-    );
-  }
-}
+import '../config/app_config.dart';
 
 class PrecoValor extends StatefulWidget {
   const PrecoValor({
     Key? key,
-    required this.tamanho,
-    required this.preco,
-    required this.valor,
-    required this.groupValue,
     required this.nomePrato,
-    required this.onChangedValor,
   }) : super(key: key);
 
-  final String tamanho;
-  final String preco;
-  final String valor;
-  final String groupValue;
   final String nomePrato;
-  final Function onChangedValor;
 
   @override
   State<PrecoValor> createState() => _PrecoValorState();
 }
 
 class _PrecoValorState extends State<PrecoValor> {
-  String? valorRadio;
+  String? groupValue;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-         Text(
-          widget.nomePrato,
-          style: const TextStyle(
-            fontSize: 16,
+    return Container(
+      margin: EdgeInsets.zero,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            '- ${widget.nomePrato}',
+            style: TextStyle(
+              color: Color(AppConfig().cor['primaria']!),
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-        Container(
-          margin: EdgeInsets.zero,
-          child: Column(
-            children: [
-              RadioSelecaoPrecoValor(
-                tamanho: widget.tamanho,
-                preco: widget.preco,
-                valor: widget.valor,
-                groupValue: '$valorRadio',
-                onChangedValor: (val) {
+          ListTile(
+            leading: Radio(
+                activeColor: Color(AppConfig().cor['secundaria']!),
+                value: 'grande',
+                groupValue: groupValue,
+                onChanged: (v) {
                   setState(() {
-                    valorRadio = val;
-                    print(val);
+                    groupValue = v.toString();
+                    print(groupValue);
                   });
-                },
+                }),
+            title: Text(
+              'Grande - 25,00',
+              style: TextStyle(
+                color: Color(AppConfig().cor['txtPrincipal']!),
+                fontSize: 18,
               ),
-              RadioSelecaoPrecoValor(
-                tamanho: widget.tamanho,
-                preco: widget.preco,
-                valor: widget.valor,
-                groupValue: '$valorRadio',
-                onChangedValor: (val) {
-                  setState(() {
-                    valorRadio = val;
-                    print(val);
-                  });
-                },
-              ),
-            ],
+            ),
           ),
-        ),
-      ],
+          ListTile(
+            leading: Radio(
+                activeColor: Color(AppConfig().cor['secundaria']!),
+                value: 'media',
+                groupValue: groupValue,
+                onChanged: (v) {
+                  setState(() {
+                    groupValue = v.toString();
+                    print(groupValue);
+                  });
+                }),
+            title: Text(
+              'Média - 18,00',
+              style: TextStyle(
+                color: Color(AppConfig().cor['txtPrincipal']!),
+                fontSize: 18,
+              ),
+            ),
+          ),
+          ListTile(
+            leading: Radio(
+                activeColor: Color(AppConfig().cor['secundaria']!),
+                value: 'pequena',
+                groupValue: groupValue,
+                onChanged: (v) {
+                  setState(() {
+                    groupValue = v.toString();
+                    print(groupValue);
+                  });
+                }),
+            title: Text(
+              'Pequena - 14,00',
+              style: TextStyle(
+                color: Color(AppConfig().cor['txtPrincipal']!),
+                fontSize: 18,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
