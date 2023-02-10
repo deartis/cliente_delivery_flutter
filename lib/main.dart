@@ -13,6 +13,7 @@ import 'package:app_cliente_restaurante/screen/segundo_pos.dart';
 import 'package:app_cliente_restaurante/screen/detalhes_pedidos.dart';
 import 'package:app_cliente_restaurante/screen/medidas_valores.dart';
 import 'package:app_cliente_restaurante/screen/endereco_entrega.dart';
+import 'package:app_cliente_restaurante/screen/forma_pagamento.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +29,7 @@ void main() async {
         backgroundColor: Color.fromRGBO(77, 3, 3, 1),
       ),
     ),
-    initialRoute: '/enderecoentrega',
+    initialRoute: '/formapagamento',
     routes: {
       /* -------------------------------------------------------------------------- */
       /*                               Rotas Nomeadas                               */
@@ -41,6 +42,7 @@ void main() async {
       '/detalhespedidos': (context) => const DetalhesPedidos(),
       '/medidasvalores': (context) => const MedidasValores(),
       '/enderecoentrega': (context) => const EnderecoEntrega(),
+      '/formapagamento': (context) => const FormaPagamento(),
     },
   ));
 }
