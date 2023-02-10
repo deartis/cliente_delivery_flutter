@@ -39,28 +39,25 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     final db = FirebaseFirestore.instance;
 
-
-    
     final docRef = db
         .collection('Restaurante')
-        .doc('ewoiTm9tZSI6IkRlYXJ0aXMgQ2xpZW50ZSBEZW1vIiwKIkRhdGEiOiIxNi8wNC8yMDIyIiwKIlJlcHJlc2VudGFudGUiOiJKQUwiCn0=')
+        .doc(
+            'ewoiTm9tZSI6IkRlYXJ0aXMgQ2xpZW50ZSBEZW1vIiwKIkRhdGEiOiIxNi8wNC8yMDIyIiwKIlJlcHJlc2VudGFudGUiOiJKQUwiCn0=')
         .collection('CardapioDoDia')
         .doc('12-01-2023');
 
     debugPrint('$docRef');
     docRef.get().then((value) => {
-      value.reference.snapshots().forEach((element) {
-        print(element.data());
-      })
-    });
+          value.reference.snapshots().forEach((element) {
+            //print(element.data());
+          })
+        });
 
     /*
     * .then((DocumentSnapshot doc) {
       final data = doc.data() as Map<String, dynamic>;
       print(data);
     }, onError: (e) => debugPrint('Erro: $e'));*/
-
-
 
     return Scaffold(
       drawer: const Drawer(
@@ -73,7 +70,9 @@ class _HomeState extends State<Home> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Header(titulo: "Cardápio",),
+            const Header(
+              titulo: "Cardápio",
+            ),
             Card(
               elevation: 2,
               margin: const EdgeInsets.all(10),
@@ -110,7 +109,7 @@ class _HomeState extends State<Home> {
                             imagem: item['imagem'],
                             id: item['ID'],
                             listapedidos: listaPedidos,
-                            pedidos : (prato) => addPedidos(prato),
+                            pedidos: (prato) => addPedidos(prato),
                             retirapedido: (int posicao) => delPedidos(posicao),
                           ),
                         Row(
@@ -122,7 +121,7 @@ class _HomeState extends State<Home> {
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: const Color(0xFFFFAF00),
                                   ),
-                                  onPressed:(){},
+                                  onPressed: () {},
                                   child: const Text(
                                     'Próximo',
                                     style: TextStyle(
@@ -147,16 +146,15 @@ class _HomeState extends State<Home> {
   addPedidos(String prato) {
     setState(() {
       listaPedidos.add(prato);
-      print(listaPedidos);
+      //print(listaPedidos);
     });
     //print(listaPedidos);
   }
 
-  delPedidos(int posicao){
-
+  delPedidos(int posicao) {
     setState(() {
       listaPedidos.removeAt(posicao);
-      print(listaPedidos);
+      //print(listaPedidos);
     });
   }
 }

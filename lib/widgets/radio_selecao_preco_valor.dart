@@ -38,7 +38,7 @@ class _PrecoValorState extends State<PrecoValor> {
                 onChanged: (v) {
                   setState(() {
                     groupValue = v.toString();
-                    print(groupValue);
+                    //print(groupValue);
                   });
                 }),
             title: Text(
@@ -57,7 +57,7 @@ class _PrecoValorState extends State<PrecoValor> {
                 onChanged: (v) {
                   setState(() {
                     groupValue = v.toString();
-                    print(groupValue);
+                    //print(groupValue);
                   });
                 }),
             title: Text(
@@ -76,7 +76,7 @@ class _PrecoValorState extends State<PrecoValor> {
                 onChanged: (v) {
                   setState(() {
                     groupValue = v.toString();
-                    print(groupValue);
+                    debugPrint(groupValue);
                   });
                 }),
             title: Text(

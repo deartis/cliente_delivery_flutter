@@ -21,31 +21,31 @@ class _SegundoPosState extends State<SegundoPos> {
   final pontoReferenciaController = TextEditingController();
 
   void ruaChanged(String? rua) {
-    print(rua);
+    //print(rua);
   }
 
   void numeroChanged(String numero) {
-    print(numero);
+    //print(numero);
   }
 
   void complementoChanged(String complemento) {
-    print(complemento);
+    //print(complemento);
   }
 
   void cepChanged(String cep) {
-    print(cep);
+    //print(cep);
   }
 
   void bairroChanged(String bairro) {
-    print(bairro);
+    //print(bairro);
   }
 
   void cidadeChanged(String cidade) {
-    print(cidade);
+    //print(cidade);
   }
 
   void pontoReferenciaChanged(String pontoReferencia) {
-    print(pontoReferencia);
+    //print(pontoReferencia);
   }
 
   @override
@@ -74,8 +74,8 @@ class _SegundoPosState extends State<SegundoPos> {
                 child: Column(
                   children: [
                     TextfieldComponent(
-                        label: "Rua",
-                        hint: "Rua Europa",
+                        label: "Endereço",
+                        hint: "Av. Lucas Alves",
                         teclado: "texto",
                         controller: ruaController,
                         func: ruaChanged),

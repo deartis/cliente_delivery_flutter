@@ -61,7 +61,6 @@ class _MedidasValoresState extends State<MedidasValores> {
                               nomePrato: 'Peito de Frango Grelhado',
                             ),
                           ],
-                          
                         ),
                       ),
                     ],
@@ -91,6 +90,6 @@ class _MedidasValoresState extends State<MedidasValores> {
   }
 
   void fazAlgo() {
-    print('Teste');
+    //print('Teste');
   }
 }

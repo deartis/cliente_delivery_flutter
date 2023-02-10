@@ -14,6 +14,13 @@ class EnderecoEntrega extends StatefulWidget {
 class _EnderecoEntregaState extends State<EnderecoEntrega> {
   String? tipoEndereco = 'enderecoCadastrado';
   final cnf = AppConfig();
+  final ederecoCtrl = TextEditingController();
+  final numeroCtrl = TextEditingController();
+  final complementoCtrl = TextEditingController();
+  final cepCtrl = TextEditingController();
+  final bairroCtrl = TextEditingController();
+  final pontoReferenciaCtrl = TextEditingController();
+  final responsavelCtrl = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -69,14 +76,19 @@ class _EnderecoEntregaState extends State<EnderecoEntrega> {
                 child: Form(
                   child: Column(
                     children: [
-                      textFieldComponente("*Endereço", "texto", () {}),
-                      textFieldComponente("*Número", "texto", () {}),
-                      textFieldComponente("Complemento", "texto", () {}),
-                      textFieldComponente("CEP", "numero", () {}),
-                      textFieldComponente("Bairro", "texto", () {}),
+                      textFieldComponente(ederecoCtrl, "* Endereço", "texto",
+                          'Av. Lucas Alves', () {}),
                       textFieldComponente(
-                          "Ponto de referência", "texto", () {}),
-                      textFieldComponente("Responsável", "texto", () {}),
+                          numeroCtrl, "* Número", "texto", '', () {}),
+                      textFieldComponente(
+                          complementoCtrl, "Complemento", "texto", '', () {}),
+                      textFieldComponente(cepCtrl, "CEP", "numero", '', () {}),
+                      textFieldComponente(
+                          bairroCtrl, "* Bairro", "texto", '', () {}),
+                      textFieldComponente(pontoReferenciaCtrl,
+                          "* Ponto de referência", "texto", '', () {}),
+                      textFieldComponente(
+                          responsavelCtrl, "* Responsável", "texto", '', () {}),
                       BotaoPadrao(
                         texto: 'Confirmar',
                         func: () {},
@@ -94,7 +106,8 @@ class _EnderecoEntregaState extends State<EnderecoEntrega> {
     );
   }
 
-  Widget textFieldComponente(String label, String teclado, Function onChanged) {
+  Widget textFieldComponente(dynamic ctrl, String label, String teclado,
+      String hintText, Function onChanged) {
     dynamic typeKeyboard;
 
     switch (teclado) {
@@ -109,11 +122,12 @@ class _EnderecoEntregaState extends State<EnderecoEntrega> {
     }
 
     return TextField(
+      controller: ctrl,
       onChanged: onChanged(),
       keyboardType: typeKeyboard,
       decoration: InputDecoration(
         labelText: label,
-        hintText: 'Av. Lucas Alves',
+        hintText: hintText,
         labelStyle: TextStyle(
             color: Color(cnf.cor['primaria']!),
             fontSize: 18,

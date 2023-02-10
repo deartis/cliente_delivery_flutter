@@ -12,26 +12,25 @@ class PrimeiroPos extends StatefulWidget {
 }
 
 class _PrimeiroPosState extends State<PrimeiroPos> {
-  
   final nomeController = TextEditingController();
   final emailController = TextEditingController();
   final telefoneController = TextEditingController();
   final dataNascimentoController = TextEditingController();
 
   void nomeChanged(String? nome) {
-    print(nome);
+    //print(nome);
   }
 
   void emailChanged(String email) {
-    print(email);
+    //print(email);
   }
 
   void telefoneChanged(String telefone) {
-    print(telefone);
+    //print(telefone);
   }
 
   void dataNascimentoChanged(String nascimento) {
-    print(nascimento);
+    //print(nascimento);
   }
 
   @override
