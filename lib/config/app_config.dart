@@ -12,4 +12,9 @@ class AppConfig {
     "branca": 0xFFFFFFFF,
     "amarelo": 0xFFFFAF00,
   };
+
+  final Map<String, dynamic> inf = {
+    "ID":
+        "ewoiTm9tZSI6IkRlYXJ0aXMgQ2xpZW50ZSBEZW1vIiwKIkRhdGEiOiIxNi8wNC8yMDIyIiwKIlJlcHJlc2VudGFudGUiOiJKQUwiCn0=",
+  };
 }

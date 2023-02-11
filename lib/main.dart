@@ -14,6 +14,8 @@ import 'package:app_cliente_restaurante/screen/detalhes_pedidos.dart';
 import 'package:app_cliente_restaurante/screen/medidas_valores.dart';
 import 'package:app_cliente_restaurante/screen/endereco_entrega.dart';
 import 'package:app_cliente_restaurante/screen/forma_pagamento.dart';
+import 'package:app_cliente_restaurante/screen/selecao_pagamento_dinheiro.dart';
+import 'package:app_cliente_restaurante/screen/selecao_pagamento_cartao.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,7 +31,7 @@ void main() async {
         backgroundColor: Color.fromRGBO(77, 3, 3, 1),
       ),
     ),
-    initialRoute: '/formapagamento',
+    initialRoute: '/mododinheiro',
     routes: {
       /* -------------------------------------------------------------------------- */
       /*                               Rotas Nomeadas                               */
@@ -43,6 +45,8 @@ void main() async {
       '/medidasvalores': (context) => const MedidasValores(),
       '/enderecoentrega': (context) => const EnderecoEntrega(),
       '/formapagamento': (context) => const FormaPagamento(),
+      '/mododinheiro': (context) => const SelecaoPagamentoDinheiro(),
+      '/modocartao': (context) => const SelecaoPagamentoCartao(),
     },
   ));
 }
