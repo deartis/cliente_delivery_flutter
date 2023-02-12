@@ -15,6 +15,7 @@ class SelecaoPagamentoDinheiro extends StatefulWidget {
 
 class _SelecaoPagamentoDinheiroState extends State<SelecaoPagamentoDinheiro> {
   final cfg = AppConfig();
+  bool libera = true;
 
   @override
   Widget build(BuildContext context) {
@@ -27,53 +28,133 @@ class _SelecaoPagamentoDinheiroState extends State<SelecaoPagamentoDinheiro> {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(children: [
-            const Divider(thickness: 1),
-            CardPosCadastro(
-              titulo: 'Pagamento com dinheiro',
-              icone: Icon(
-                Icons.brightness_1_sharp,
-                color: Color(cfg.cor['amarelo']!),
-                size: 15,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              const Divider(thickness: 1),
+              CardPosCadastro(
+                titulo: 'Pagamento com dinheiro',
+                icone: Icon(
+                  Icons.brightness_1_sharp,
+                  color: Color(cfg.cor['amarelo']!),
+                  size: 15,
+                ),
+                filho: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Total',
+                        style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            color: Color(cfg.cor['txtPrincipal']!),
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        'R\$34,00',
+                        style: TextStyle(
+                            color: Color(cfg.cor['txtDestaque']!),
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      const Divider(thickness: 1),
+                      /* -------------------------------------------------------------------------- */
+                      /*                            Área dinheiro em mãos                           */
+                      /* -------------------------------------------------------------------------- */
+                      Row(
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(top: 10, bottom: 10),
+                            child: valorEmMaos(libera, 'mao'),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(left: 10),
+                            child: Text(
+                              'Dinheiro em mãos',
+                              style: TextStyle(
+                                color: Color(cfg.cor['txtPrincipal']!),
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      TextField(
+                        onChanged: (v) {
+                          debugPrint(v);
+                        },
+                        decoration: const InputDecoration(
+                          prefixText: 'R\$',
+                          hintText: ' 0,00',
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      /* -------------------------------------------------------------------------- */
+                      /*                             Área do campo troco                            */
+                      /* -------------------------------------------------------------------------- */
+                      Row(
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(top: 10, bottom: 10),
+                            child: valorEmMaos(libera, 'troco'),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(left: 10),
+                            child: Text(
+                              'Troco',
+                              style: TextStyle(
+                                color: Color(cfg.cor['txtPrincipal']!),
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(left: 20),
+                        width: double.infinity,
+                        child: const Text('R\$ 10,00'),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const Divider(thickness: 1),
+                      BotaoPadrao(
+                        texto: (libera ? 'Avançar' : 'Bloqueado'),
+                        func: () {},
+                        cor: (libera ? 'amarelo' : 'vermelho'),
+                      ),
+                      const BotaoPadraoVoltar(),
+                    ]),
               ),
-              filho: Column(children: [
-                Text(
-                  'Total',
-                  style: TextStyle(
-                      decoration: TextDecoration.underline,
-                      color: Color(cfg.cor['txtPrincipal']!),
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  'R\$34,00',
-                  style: TextStyle(
-                      color: Color(cfg.cor['txtDestaque']!),
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold),
-                ),
-                const Divider(thickness: 1),
-                Row(
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(top: 10, bottom: 10),
-                      child: valorEmMaos(),
-                    ),
-                    Container(
-                        margin: const EdgeInsets.only(left: 10),
-                        child: const Text('Dinheiro em mãos'))
-                  ],
-                ),
-              ]),
-            ),
-          ]),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Widget valorEmMaos() {
+  /* -------------------------------------------------------------------------- */
+  /*                         Widget de dinheiro em mãos                         */
+  /* -------------------------------------------------------------------------- */
+
+  Widget valorEmMaos(bool liberar, String icon) {
     const String iconDinheiroEmMaos = 'lib/assets/img/dinheiro_maos.svg';
+    const String iconTroco = 'lib/assets/img/icon_troco.svg';
+
+    var selectIcon;
+
+    switch (icon) {
+      case 'mao':
+        selectIcon = iconDinheiroEmMaos;
+        break;
+      case 'troco':
+        selectIcon = iconTroco;
+        break;
+    }
+
     //final Widget svgIconDinheiroMaos =
     return Container(
       margin: const EdgeInsets.all(10),
@@ -82,21 +163,12 @@ class _SelecaoPagamentoDinheiroState extends State<SelecaoPagamentoDinheiro> {
           Row(
             children: [
               SvgPicture.asset(
-                iconDinheiroEmMaos,
-                colorFilter:
-                    const ColorFilter.mode(Colors.green, BlendMode.srcIn),
+                selectIcon,
+                colorFilter: ColorFilter.mode(
+                    liberar ? Colors.green : Colors.red, BlendMode.srcIn),
               )
             ],
           ),
-          Flexible(
-              child: TextField(
-            decoration: const InputDecoration(
-              prefix: Text('R\$'),
-            ),
-            onChanged: (v) {
-              debugPrint(v);
-            },
-          ))
         ],
       ),
     );
