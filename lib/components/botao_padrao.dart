@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class BotaoPadrao extends StatelessWidget {
+class BotaoPadrao extends StatefulWidget {
   const BotaoPadrao(
       {Key? key, this.cor, required this.texto, required this.func})
       : super(key: key);
@@ -10,10 +10,15 @@ class BotaoPadrao extends StatelessWidget {
   final Function func;
 
   @override
+  State<BotaoPadrao> createState() => _BotaoPadraoState();
+}
+
+class _BotaoPadraoState extends State<BotaoPadrao> {
+  @override
   Widget build(BuildContext context) {
-    int corTexto = cor=='amarelo'?0xFF4C0303:0xFFFFFFFF;
+    int corTexto = widget.cor == 'amarelo' ? 0xFF4C0303 : 0xFFFFFFFF;
     int corFundo() {
-      switch (cor) {
+      switch (widget.cor) {
         case 'amarelo':
           return 0xFFFFAF00;
         case 'vermelho':
@@ -24,13 +29,17 @@ class BotaoPadrao extends StatelessWidget {
     }
 
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        setState(() {
+          widget.func();
+        });
+      },
       style: ElevatedButton.styleFrom(
         backgroundColor: Color(corFundo()),
         minimumSize: const Size.fromHeight(50),
       ),
       child: Text(
-        texto,
+        widget.texto,
         style: TextStyle(fontSize: 20, color: Color(corTexto)),
       ),
     );

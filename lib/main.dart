@@ -16,6 +16,7 @@ import 'package:app_cliente_restaurante/screen/endereco_entrega.dart';
 import 'package:app_cliente_restaurante/screen/forma_pagamento.dart';
 import 'package:app_cliente_restaurante/screen/selecao_pagamento_dinheiro.dart';
 import 'package:app_cliente_restaurante/screen/selecao_pagamento_cartao.dart';
+import 'package:app_cliente_restaurante/screen/timeline.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,7 +32,7 @@ void main() async {
         backgroundColor: Color.fromRGBO(77, 3, 3, 1),
       ),
     ),
-    initialRoute: '/mododinheiro',
+    initialRoute: '/timeline',
     routes: {
       /* -------------------------------------------------------------------------- */
       /*                               Rotas Nomeadas                               */
@@ -47,6 +48,7 @@ void main() async {
       '/formapagamento': (context) => const FormaPagamento(),
       '/mododinheiro': (context) => const SelecaoPagamentoDinheiro(),
       '/modocartao': (context) => const SelecaoPagamentoCartao(),
+      '/timeline': (context) => const Timeline(),
     },
   ));
 }
